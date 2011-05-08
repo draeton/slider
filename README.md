@@ -1,4 +1,4 @@
-_Slider jQuery Plugin_
+# Slider jQuery Plugin
 
 This is a barebones jQuery slider plugin, for those who don't want to go through the trouble of loading the entire jQuery UI framework just for a slider.
 
