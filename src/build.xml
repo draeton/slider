@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project  name="minify JS and CSS" basedir="." default="main">
+    <property name="css" location="."/>
+    <property name="js" location="."/>
+    <property name="cssmin" location="../min"/>
+    <property name="jsmin" location="../min"/>
+
+    <property name="yuicompressor" location="/Users/mcobbs/home/bin/yuicompressor-2.4.6.jar"/>
+
+    <target name="clean" description="Delete all generated files">
+        <delete dir="${cssmin}" includes="*.min.css"/>
+        <delete dir="${jsmin}" includes="*.min.js"/>
+    </target>
+
+    <target name="js.minify" description="minifying JS">
+        <apply executable="java" parallel="false">
+            <fileset dir="${js}" includes="*.js"/>
+            <arg line="-jar"/>
+            <arg path="${yuicompressor}"/>
+            <arg line="-v --charset UTF-8"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="${jsmin}/*.min.js"/>
+            <targetfile/>
+        </apply>
+    </target>
+
+    <target name="css.minify" description="minifying CSS">
+        <apply executable="java" parallel="false">
+            <fileset dir="${css}" includes="*.css"/>
+            <arg line="-jar"/>
+            <arg path="${yuicompressor}"/>
+            <arg line="--line-break 0"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="${cssmin}/*.min.css"/>
+            <targetfile/>
+        </apply>
+    </target>
+
+    <target name="main" depends="clean,js.minify,css.minify"/>
+</project>
