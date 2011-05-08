@@ -5,7 +5,7 @@
     <property name="cssmin" location="../min"/>
     <property name="jsmin" location="../min"/>
 
-    <property name="yuicompressor" location="/Users/mcobbs/home/bin/yuicompressor-2.4.6.jar"/>
+    <property name="yuicompressor" location="/usr/local/bin/yuicompressor-2.4.6.jar"/>
 
     <target name="clean" description="Delete all generated files">
         <delete dir="${cssmin}" includes="*.min.css"/>
